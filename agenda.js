@@ -1,41 +1,38 @@
+"use strict";
 class Agenda {
-    constructor(){
-        this.contatos = []
+    contatos;
+    constructor() {
+        this.contatos = [];
     }
-    adicionarContato(nome, telefone){
+    adicionarContato(nome, telefone) {
         this.contatos.push({
-            nome, 
-            telefone});
-
+            nome,
+            telefone
+        });
     }
-
-    listarContatos(){
-        for (let i = 0; i<this.contatos.length; i++){
-            this.contatos[i]
-            console.log(this.contatos[i].nome)
-            console.log(this.contatos[i].telefone)
+    listarContatos() {
+        for (let i = 0; i < this.contatos.length; i++) {
+            console.log(`Nome: ${this.contatos[i].nome}`);
+            console.log(`Telefone: ${this.contatos[i].telefone}`);
         }
     }
-    buscarContato(nome){
-        for(let i = 0; i< this.contatos.length; i++){
-            if (nome == this.contatos[i].nome){
-                console.log(this.contatos[i].telefone);
+    buscarContato(nome) {
+        let encontrado = false;
+        for (let i = 0; i < this.contatos.length; i++) {
+            if (nome === this.contatos[i].nome) {
+                console.log(`Telefone: ${this.contatos[i].telefone}`);
+                encontrado = true;
+                break;
             }
-            else {
-                console.log("Contato não encontrado");
-            }
+        }
+        if (!encontrado) {
+            console.log("Contato não encontrado.");
         }
     }
 }
-
 const minhaAgenda = new Agenda();
-
-
 minhaAgenda.adicionarContato("Lucas", "99999-9999");
 minhaAgenda.adicionarContato("Miguel", "88888-8888");
-
 console.log(minhaAgenda);
-
 minhaAgenda.listarContatos();
-
 minhaAgenda.buscarContato("Lucas");
